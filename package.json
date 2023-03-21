@@ -1,0 +1,21 @@
+{
+  "name": "urlshorter",
+  "version": "1.0.0",
+  "description": "A simple urlShorter application",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bfjeje/urlShorter.git"
+  },
+  "author": "Bruno Ellerbach",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mariadb": "^3.1.1"
+  }
+}
