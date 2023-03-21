@@ -1,6 +1,10 @@
 # urlShorter
 A simple URL shorter made with Node.JS, Express and MariaDB
 
+# Steps:
+1) npm install
+2) node index.js
+
 # API Info:
 [POST] http://localhost:3001/urlshorter/encurtar - Params: {<br />
 "urlLonga": "http://www.facebook.com/teste4" <br />
