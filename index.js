@@ -1,4 +1,7 @@
 const express = require('express');
+const dotenv = require('dotenv');
+
+dotenv.config({path: '.env-local'});
 
 //I get the port from file .env-local, or default port: 3000.
 const PORT = process.env.PORT || '3001';
@@ -14,10 +17,8 @@ app.use(express.urlencoded({extended:false}));
 /*
 Routes
  */
-
-app.get('/', (request, response) => {
-    response.status(200).json({name:'Bruno', doing:'Coding'});
-})
+const urlShorterRouter = require('./routes/urlShorter');
+app.use('/urlshorter', urlShorterRouter);
 
 /*
 Start Listening
