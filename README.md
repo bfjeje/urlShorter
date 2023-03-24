@@ -4,8 +4,8 @@ A simple URL shorter made with Node.JS, Express and MariaDB
 # Steps:
 1) No banco de dados, criar o banco de dados chamado urlshorter, e dentro dele executar o SQL que esta no arquivo create_table.sql
 2) npm install nodemon
-2) npm run dev
-3) 
+3) npm run dev
+4) para gerar a documentação: yarn generate:doc
 
 # API Info:
 ### Ponto 1: um método de encurtar uma URL persistindo-a no banco de dados

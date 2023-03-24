@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "generate:doc": "jsdoc -r routes"
   },
   "repository": {
     "type": "git",
@@ -16,6 +17,9 @@
   "dependencies": {
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
-    "mariadb": "^3.1.1"
+    "jsdoc": "^4.0.2",
+    "mariadb": "^3.1.1",
+    "swagger-ui-express": "^4.6.2",
+    "yamljs": "^0.3.0"
   }
 }

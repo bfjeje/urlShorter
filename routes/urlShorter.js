@@ -4,7 +4,12 @@ const router = express.Router();
 
 const URL_START = "http://short.by/";
 
+/**
+ * @module urlShorterService
+ */
+
 /***Ponto 1: Um método de encurtar uma URL persistindo-a no banco de dados.***/
+
 router.post('/encurtar', async function (req, res){
     try {
         const {urlLonga} = req.body;
@@ -59,6 +64,11 @@ router.post('/shorturl', async function (req, res) {
     }
 });
 
+/**
+ * Cria uma URL curta completa de forma aleatoria.
+ *
+ * @returns {string} - urlCurta completa
+ */
 function getRandomURL() {
 
     return URL_START+Math.random().toString(32).substring(2, 5) + Math.random().toString(32).substring(2, 5);
