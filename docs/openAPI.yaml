@@ -1,0 +1,137 @@
+openapi: 3.0.3
+info:
+  title: UrlShorter API
+  description: Todas as informações das APIs que precisam!
+  version: 1.0.0
+paths:
+  /urlshorter/{id}:
+    get:
+      description: Retorna uma url baseado num id.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK
+          $ref: '#/components/schemas/fullUrlObject'
+          content:
+            application/json:
+              schema:
+                type: array
+                required:
+                  - id
+                properties:
+                  id: int
+        400:
+          description: O ID não existe.
+
+  /urlshorter/encurtar:
+    post:
+      description: Encurta uma url longa
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - urlLonga
+              properties:
+                urlLonga:
+                  type: string
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/fullUrlObject'
+        400:
+          description: Alguma coisa saiu de controle.
+
+  /urlshorter/all:
+    post:
+      description: Traz todas as urls dentro de uma data especificada
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - dateTime
+              properties:
+                dateTime:
+                  type: string
+                  example: "2023-03-23"
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/justUrlShort'
+        400:
+          description: Alguma coisa saiu de controle.
+
+  /urlshorter/shorturl:
+    post:
+      description: Retorna uma url curta completa a partir do final dela.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - encurtamento
+              properties:
+                encurtamento:
+                  type: string
+                  example: "rgl29p"
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/justUrlShort'
+        400:
+          description: Alguma coisa saiu de controle.
+
+components:
+  schemas:
+    fullUrlObject:
+      type: object
+      required:
+        - id
+        - urlshort
+        - urllong
+        - created_at
+      properties:
+        id:
+          type: integer
+        urlshort:
+          type: string
+        urllong:
+          type: string
+        created_at:
+          type: string
+    justId:
+      type: object
+      required:
+        - id
+      properties:
+        id:
+          type: integer
+    justUrlShort:
+      type: array
+      required:
+        - urlshort
+      properties:
+        urlshort:
+          type: string
+          example: [{"urlshort": "http://short.by/6v0rft"}]
